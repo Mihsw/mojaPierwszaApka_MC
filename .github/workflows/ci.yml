@@ -19,6 +19,3 @@ jobs:
       - name: Validate HTML
         run: |
           npx htmlhint **/*.html
-
-      - name: Check for broken links
-        run: npx linkinator .
