@@ -9,7 +9,6 @@
         const timeEl = document.getElementById('time');
         const errorEl = document.getElementById('error');
 
-        // Map Open-Meteo weathercode to Polish description (simplified)
         const weatherCodePL = {
             0: 'Czyste niebo',
             1: 'Częściowo słonecznie',
@@ -42,18 +41,15 @@
         };
 
         async function geocode(city) {
-            // Open-Meteo geocoding
             const url = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1&language=pl`;
             const res = await fetch(url);
             if (!res.ok) throw new Error('Błąd geokodowania');
             const data = await res.json();
             if (!data.results || data.results.length === 0) throw new Error('Nie znaleziono lokalizacji');
-            return data.results[0]; // has latitude, longitude, name, country
+            return data.results[0];
         }
 
         async function fetchWeatherForLatLon(lat, lon) {
-            // Request current weather and hourly relative humidity for the current hour
-            // We'll request hourly relativehumidity_2m and current_weather
             const now = new Date();
             const start = now.toISOString().slice(0,13) + ':00:00Z';
             const end = start; // only need the current hour value
@@ -65,7 +61,6 @@
 
         function getHumidityForNow(hourly) {
             if (!hourly || !hourly.time || !hourly.relativehumidity_2m) return null;
-            // Find closest hour to now (in UTC)
             const now = new Date();
             const nowUTC = new Date(now.toUTCString().slice(0, -4));
             const times = hourly.time;
@@ -94,7 +89,7 @@
             tempEl.textContent = temp;
             descEl.textContent = desc;
             moreEl.textContent = [humidity ? `Wilgotność: ${humidity}%` : null, wind ? `Wiatr: ${wind}` : null].filter(Boolean).join(' · ');
-            iconEl.style.display = 'none'; // Open-Meteo doesn't provide icons; keep layout consistent
+            iconEl.style.display = 'none';
             timeEl.textContent = 'Ostatnia aktualizacja: ' + new Date().toLocaleTimeString();
             result.hidden = false;
         }
