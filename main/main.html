@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Sprawdzacz pogody - stolice</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Sprawdzacz pogody — stolice</h1>
+        <p>USA, UK, Chiny, Rosja, Francja, Niemcy, Indie</p>
+    </header>
+
+    <div class="controls">
+        <select id="citySelect" aria-label="Wybierz stolicę">
+            <option value="Washington">USA — Washington</option>
+            <option value="London">UK — London</option>
+            <option value="Beijing">Chiny — Beijing</option>
+            <option value="Moscow">Rosja — Moscow</option>
+            <option value="Paris">Francja — Paris</option>
+            <option value="Berlin">Niemcy — Berlin</option>
+            <option value="New Delhi">Indie — New Delhi</option>
+        </select>
+        <button id="checkBtn">Sprawdź pogodę</button>
+    </div>
+
+    <main>
+        <div id="result" class="card" hidden>
+            <img id="icon" class="icon" src="" alt="" />
+            <div class="info">
+                <div id="place" class="meta"></div>
+                <div id="temp" class="temp"></div>
+                <div id="desc" class="meta"></div>
+                <div id="more" class="meta"></div>
+                <div id="time" class="meta" style="margin-top:.4rem; font-size:.85rem"></div>
+            </div>
+        </div>
+        <div id="error" style="color:#b00; margin-top:.5rem;"></div>
+    </main>
+
+    <footer>
+        Aplikacja korzysta z Open-Meteo (nie wymaga klucza API).
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
