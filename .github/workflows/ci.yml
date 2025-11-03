@@ -23,3 +23,6 @@ jobs:
       - name: Validate JavaScript
         run: |
           npx jshint **/*.js
+
+      - name: Check for broken links
+        run: npx linkinator .
