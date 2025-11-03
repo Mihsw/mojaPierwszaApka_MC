@@ -1,1 +1,1 @@
-# mojaPierwszaApka_MC
+# mojaPierwszaApka_MC - państa Polski
